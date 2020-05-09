@@ -1,65 +1,16 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    HOMEPAGE!!!
+    Home
 {% endblock %}
 
-
-{% block body %}
-<div class="row">
-  <div class="col-3"></div>
-  <div class="col-6"><h1 style="color:blue;text-float:center;margin-bottom:30px;margin-top:50px;">SibariBooks </h1></div>
-  <div class="col-3"></div>
-</div>
-
-<div class="container-fluid">
-
-    <div class="row">
-
-      <div class="col-sm-5">
-      <h3 style="color:red;text-float:center;margin-bottom:30px;">Sign in to your existing Account</h3>
-      <form action="{{ url_for('login') }}" method="post">
+{% block content %}
+    <h3>Search for a book!</h3>
+    <form action="/search" method="GET">
         <div class="form-group">
-          <label for="usr">Username:</label>
-          <input type="text" name="username2" class="form-control" placeholder="Enter Username" id="usr">
+            <input type="text" class="form-control" name="book" autofocus aria-describedby="bookHelp" placeholder="ISBN, Title or Author">
+            <small id="bookHelp" class="form-text text-muted">Example: 0375508325, Cosmos or Carl Sagan</small>
         </div>
-        <div class="form-group">
-          <label for="pswd">Password:</label>
-          <input type="password" name="password2" class="form-control" placeholder="Enter Password" id="pswd">
-        </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
-      </form>
-      </div>
-
-       <div class="col-sm-2"></div>
-
-      <div class="col-sm-5" >
-        <h3 style="color:red;text-float:center;margin-bottom:30px;">Sign up for an Account</h3>
-        <form action="{{ url_for('register') }}" method="post">
-          <div class="form-group">
-            <label for="nm">Your Name:</label>
-            <input type="text" name="name" class="form-control" placeholder="Enter Name" id="nm">
-          </div>
-          <div class="form-group">
-            <label for="snm">Your Surname:</label>
-            <input type="text" name="surname" class="form-control" placeholder="Enter Surname" id="snm">
-          </div>
-          <div class="form-group">
-            <label for="ml">Your e-mail:</label>
-            <input type="email" name="email" class="form-control" placeholder="Enter e-mail" id="ml">
-          </div>
-          <div class="form-group">
-            <label for="usr">Your Username:</label>
-            <input type="text" name="username" class="form-control" placeholder="Enter Username" id="usr">
-          </div>
-          <div class="form-group">
-            <label for="pwd">Your Password:</label>
-            <input type="password" name="password" class="form-control" placeholder="Enter Password" id="pwd">
-          </div>
-          <button type="submit" class="btn btn-primary">Register</button>
-       </form>
-      </div>
-   </div>
-</div>
-
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
 {% endblock %}

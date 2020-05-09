@@ -1,24 +1,28 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Success!
+    Results
 {% endblock %}
 
-{% block body %}
+{% block content %}
 
-<div class="row">
-  <div class="col-3"></div>
-  <div class="col-6"><h3 style="color:red;text-float:center;margin-bottom:30px;margin-top:50px;">FOUND RESULTS:</h3></div>
-  <div class="col-3"></div>
-</div>
+<h3>Search Results</h3>
+<div class="dropdown-divider"></div>
 
-<ul>
-    {% for book in search_results %}
-        <li>
-            <a href="{{ url_for('review', book_isbn=book.isbn) }}">
-                ISBN: {{ book.isbn }} Title: "{{ book.title }}" Author: {{ book.author }}, Year: {{ book.year }}.
-            </a>
-        </li>
+<div class="container results-container">
+
+    {% for book in books %}
+        <div class="card border-primary mb-3" style="width: 12rem">
+            <div class="card-body">
+                <h4 class="card-title">{{book['title']}}</h4>
+                <h6 class="card-text">{{book['author']}}</h6>
+                <h6 class="card-text">{{book['year']}}</h6>
+                <h6 class="card-text">{{book['isbn']}}</h6>
+            </div>
+            <div class="card-footer">
+                <a href="/book/{{book['isbn']}}" class="card-link">Go to book page</a>
+            </div>
+        </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
